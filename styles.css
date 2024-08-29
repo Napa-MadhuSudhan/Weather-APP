@@ -232,5 +232,30 @@ button:hover {
     background-color: white; /* Keep background white regardless of theme */
     color: black; /* Text color */
 }
+#forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
 
+.forecast-day {
+    background-color: #2c3e50; /* Darker background for better visibility */
+    color: #ecf0f1; /* Light text color for contrast */
+    border: 1px solid #34495e; /* Slightly lighter border */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 18%;
+    margin: 1%;
+}
 
+.forecast-day h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.forecast-day p {
+    margin: 5px 0;
+}
