@@ -20,6 +20,7 @@ document.getElementById('getWeather').addEventListener('click', () => {
     const city = document.getElementById('city').value;
     if (city) {
         getWeatherData(city);
+        getForecastData(city);
     } else {
         alert('Please enter a city name.');
     }
@@ -73,6 +74,46 @@ function getWeatherData(city) {
     })
     .catch(error => {
         console.error('Error fetching weather data:', error);
+    });
+}
+
+function getForecastData(city) {
+    const apiKey = '60acf7a976bd6933dac72687e2702a7c';
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        if (data.cod === "200") {
+            const forecast = data.list.slice(0, 5); // Get forecast for the next 5 days
+            displayForecast(forecast);
+        } else {
+            alert('City not found');
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching forecast data:', error);
+    });
+}
+
+function displayForecast(forecast) {
+    const forecastContainer = document.getElementById('forecast');
+    forecastContainer.innerHTML = '';
+
+    forecast.forEach(day => {
+        const date = new Date(day.dt * 1000);
+        const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
+        const weather = day.weather[0].main;
+        const tempCelsius = day.main.temp;
+
+        const dayElement = document.createElement('div');
+        dayElement.className = 'forecast-day';
+        dayElement.innerHTML = `
+            <h3>${dayOfWeek}</h3>
+            <p>Weather: ${weather}</p>
+            <p>Temp: ${tempCelsius.toFixed(2)} °C / ${celsiusToFahrenheit(tempCelsius).toFixed(1)} °F</p>
+        `;
+        forecastContainer.appendChild(dayElement);
     });
 }
 
