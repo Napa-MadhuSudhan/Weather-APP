@@ -85,7 +85,7 @@ function getForecastData(city) {
     .then(response => response.json())
     .then(data => {
         if (data.cod === "200") {
-            const forecast = data.list.slice(0, 5); // Get forecast for the next 5 days
+            const forecast = data.list.slice(1, 6); // Get forecast for the next 5 days
             displayForecast(forecast);
         } else {
             alert('City not found');
@@ -100,7 +100,7 @@ function displayForecast(forecast) {
     const forecastContainer = document.getElementById('forecast');
     forecastContainer.innerHTML = '';
 
-    forecast.forEach(day => {
+    forecast.forEach((day,index) => {
         const date = new Date(day.dt * 1000);
         const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
         const weather = day.weather[0].main;
@@ -109,7 +109,7 @@ function displayForecast(forecast) {
         const dayElement = document.createElement('div');
         dayElement.className = 'forecast-day';
         dayElement.innerHTML = `
-            <h3>${dayOfWeek}</h3>
+            <h3>$ Day ${Index + 1}</h3>
             <p>Weather: ${weather}</p>
             <p>Temp: ${tempCelsius.toFixed(2)} °C / ${celsiusToFahrenheit(tempCelsius).toFixed(1)} °F</p>
         `;
