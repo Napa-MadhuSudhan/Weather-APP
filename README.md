@@ -2,13 +2,14 @@
 
 ## Overview
 
-The Weather Information App provides users with current weather data for a specified city. It includes temperature readings, weather descriptions, and emojis to represent different weather conditions. The app also changes its theme based on the weather conditions, making the experience visually engaging.
+The Weather Information App provides users with current weather data for a specified city. It includes temperature readings, weather descriptions, and emojis to represent different weather conditions. The app also changes its theme based on the weather conditions, making the experience visually engaging. Also provide next  5 days weather forecast for the selected city.
 
 ## Features
 
 - **Weather Information**: Displays current weather and temperature in Celsius and Fahrenheit.
 - **Dynamic Theme**: Changes the background theme according to the weather condition (e.g., sunny, rainy, snowy).
 - **City Suggestions**: Provides city suggestions as users type, using data from a pre-loaded JSON file.
+- **Forecasting**: Proovides city next 5 days weather forecast.
 - **Weather Emojis**: Displays appropriate emojis based on the weather condition.
 
 ## Files and Directories
