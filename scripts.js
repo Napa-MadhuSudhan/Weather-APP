@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 });
-
 document.getElementById('getWeather').addEventListener('click', () => {
     const city = document.getElementById('city').value;
     if (city) {
