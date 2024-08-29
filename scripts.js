@@ -99,17 +99,16 @@ function getForecastData(city) {
 function displayForecast(forecast) {
     const forecastContainer = document.getElementById('forecast');
     forecastContainer.innerHTML = '';
-
     forecast.forEach((day,index) => {
         const date = new Date(day.dt * 1000);
-        const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
+        // Use 'short' format for weekdays
+        const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
         const weather = day.weather[0].main;
         const tempCelsius = day.main.temp;
-
         const dayElement = document.createElement('div');
         dayElement.className = 'forecast-day';
         dayElement.innerHTML = `
-            <h3>$ Day ${index + 1}</h3>
+            <h3>Day ${index + 1}</h3>
             <p>Weather: ${weather}</p>
             <p>Temp: ${tempCelsius.toFixed(2)} °C / ${celsiusToFahrenheit(tempCelsius).toFixed(1)} °F</p>
         `;
