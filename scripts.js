@@ -109,7 +109,7 @@ function displayForecast(forecast) {
         const dayElement = document.createElement('div');
         dayElement.className = 'forecast-day';
         dayElement.innerHTML = `
-            <h3>$ Day ${Index + 1}</h3>
+            <h3>$ Day ${index + 1}</h3>
             <p>Weather: ${weather}</p>
             <p>Temp: ${tempCelsius.toFixed(2)} °C / ${celsiusToFahrenheit(tempCelsius).toFixed(1)} °F</p>
         `;
