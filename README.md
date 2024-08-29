@@ -50,5 +50,5 @@ The Weather Information App provides users with current weather data for a speci
 ## Contact
 
 For any questions or feedback, please reach out to [madhusudhan.napa@outlook.com].
-```
+
 
