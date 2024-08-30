@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 });
-
+document.getElementById('infoButton').addEventListener('click', () => {
+    window.open('https://www.linkedin.com/school/productmanagerinterview/', '_blank');
+});
 document.getElementById('getWeather').addEventListener('click', () => {
     const city = document.getElementById('city').value;
     if (city) {
