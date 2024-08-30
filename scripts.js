@@ -85,8 +85,9 @@ function getForecastData(city) {
     .then(response => response.json())
     .then(data => {
         if (data.cod === "200") {
-            const forecast = data.list.slice(1, 6); // Get forecast for the next 5 days
-            displayForecast(forecast);
+            // Get forecast data at intervals of 24 hours (around midday)
+            const forecast = data.list.filter((reading) => reading.dt_txt.includes("12:00:00"));
+            populateForecast(forecast);
         } else {
             alert('City not found');
         }
@@ -96,23 +97,24 @@ function getForecastData(city) {
     });
 }
 
-function displayForecast(forecast) {
-    const forecastContainer = document.getElementById('forecast');
-    forecastContainer.innerHTML = '';
-    forecast.forEach((day,index) => {
-        const date = new Date(day.dt * 1000);
-        // Use 'short' format for weekdays
-        const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
-        const weather = day.weather[0].main;
-        const tempCelsius = day.main.temp;
-        const dayElement = document.createElement('div');
-        dayElement.className = 'forecast-day';
-        dayElement.innerHTML = `
-            <h3>Day ${index + 1}</h3>
-            <p>Weather: ${weather}</p>
-            <p>Temp: ${tempCelsius.toFixed(2)} °C / ${celsiusToFahrenheit(tempCelsius).toFixed(1)} °F</p>
-        `;
-        forecastContainer.appendChild(dayElement);
+function populateForecast(forecast) {
+    const forecastDays = document.querySelectorAll('.forecast-day');
+    
+    forecastDays.forEach((day, index) => {
+        // Check if there is corresponding data for the day
+        if (forecast[index]) {
+            const date = new Date(forecast[index].dt * 1000);
+            const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
+            const weather = forecast[index].weather[0].main;
+            const tempCelsius = forecast[index].main.temp;
+
+            day.innerHTML = `
+                <h3>${dayOfWeek}</h3>
+                <p>Weather: ${weather}</p>
+                <p>Temp: ${tempCelsius.toFixed(2)} °C / ${celsiusToFahrenheit(tempCelsius).toFixed(1)} °F</p>
+            `;
+            day.style.display = 'block'; // Show the div once it has content
+        }
     });
 }
 
