@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('cities.json')
+    fetch('cities_modified.json')
         .then(response => response.json())
         .then(data => {
             const cityInput = document.getElementById('city');
@@ -27,7 +27,7 @@ document.getElementById('getWeather').addEventListener('click', () => {
 });
 
 function filterCities(query) {
-    fetch('cities.json')
+    fetch('cities_modified.json')
         .then(response => response.json())
         .then(cities => {
             const filteredCities = cities
