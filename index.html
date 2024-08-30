@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         #app {
-            width: 100%; /* Adjust the width as needed */
-            height: 100vh; /* Adjust the height as needed */
+            width: 100%;
+            height: 100vh;
             margin: auto;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Prevents overflow issues */
+            overflow: hidden;
         }
 
         #suggestions {
@@ -24,21 +24,26 @@
             background-color: white;
             z-index: 1000;
         }
+
         #suggestions div {
             padding: 8px;
             cursor: pointer;
-            background-color: white; /* Keep background white regardless of theme */
-            color: black; /* Text color */
+            background-color: white;
+            color: black;
         }
+
         #suggestions div:hover {
             background-color: #f0f0f0;
         }
+
         .input-container {
             position: relative;
         }
+
         #getWeather {
             margin-top: 10px;
         }
+
         #forecast {
             margin-top: 30px;
             text-align: center;
@@ -62,12 +67,30 @@
         .forecast-day p {
             margin: 5px 0;
         }
+
+        #infoButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #infoButton:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div id="app" class="default-theme">
         <h1>Weather Information</h1>
-        <p>Enter a city to get the current weather and temperature. The weather information will also include 5 days weather forecast also.</p>
+        <p>Developed by Madhusudhan Napa</p>
+        <button id="infoButton">Info</button>
+        <p>Enter a city to get the current weather and temperature. The weather information will also include a 5-day weather forecast.</p>
         <div class="input-container">
             <input type="text" id="city" placeholder="Enter city name">
             <button id="getWeather">Get Weather</button>
