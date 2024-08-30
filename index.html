@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         #app {
-            width: 100%; /* Adjust the width as needed */
-            height: 100vh; /* Adjust the height as needed */
+            width: 90%; /* Increased width */
+            max-width: 1200px; /* Max width for larger screens */
+            height: 100vh;
             margin: auto;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Prevents overflow issues */
+            overflow: hidden;
         }
 
         #suggestions {
@@ -24,34 +25,46 @@
             background-color: white;
             z-index: 1000;
         }
+
         #suggestions div {
             padding: 8px;
             cursor: pointer;
-            background-color: white; /* Keep background white regardless of theme */
-            color: black; /* Text color */
+            background-color: white;
+            color: black;
         }
+
         #suggestions div:hover {
             background-color: #f0f0f0;
         }
+
         .input-container {
             position: relative;
         }
+
         #getWeather {
             margin-top: 10px;
         }
+
         #forecast {
             margin-top: 30px;
-            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+            grid-gap: 20px;
+            justify-items: center; /* Center items horizontally */
         }
 
         .forecast-day {
-            display: inline-block;
-            width: 18%;
-            margin: 1%;
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            vertical-align: top;
+            width: 100%;
+            max-width: 400px;
+            display: none; /* Hide by default */
+        }
+
+        .forecast-day.center {
+            grid-column: span 2; /* Span across both columns */
+            width: 80%;
         }
 
         .forecast-day h3 {
@@ -62,12 +75,20 @@
         .forecast-day p {
             margin: 5px 0;
         }
+
+        .developer-info {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
     </style>
 </head>
 <body>
     <div id="app" class="default-theme">
         <h1>Weather Information</h1>
-        <p>Enter a city to get the current weather and temperature. The weather information will also include 5 days weather forecast also.</p>
+        <p>Enter a city to get the current weather and a 5-day forecast.</p>
         <div class="input-container">
             <input type="text" id="city" placeholder="Enter city name">
             <button id="getWeather">Get Weather</button>
@@ -79,13 +100,16 @@
             <p id="temperature"></p>
             <span id="weatherEmoji"></span>
         </div>
-        <div id="forecast"></div>
-    </div>
-    <div id="credits">
-        Weather Information Developed by 
-        <a href="https://www.linkedin.com/in/madhusudhannapa/" target="_blank">Madhusudhan Napa</a> 
-        for 
-        <a href="https://www.linkedin.com/school/productmanagerinterview/" target="_blank">PM Accelerator</a>
+        <div id="forecast">
+            <div class="forecast-day" id="day1"></div>
+            <div class="forecast-day" id="day2"></div>
+            <div class="forecast-day" id="day3"></div>
+            <div class="forecast-day" id="day4"></div>
+            <div class="forecast-day center" id="day5"></div>
+        </div>
+        <div class="developer-info">
+            Developed by <a href="https://www.linkedin.com/in/madhusudhannapa/" target="_blank">Madhusudhan Napa</a> for <a href="https://www.linkedin.com/school/productmanagerinterview/" target="_blank">PM Accelerator</a>
+        </div>
     </div>
 
     <script src="scripts.js"></script>
