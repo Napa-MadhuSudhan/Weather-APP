@@ -259,3 +259,23 @@ button:hover {
 .forecast-day p {
     margin: 5px 0;
 }
+#credits {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 12px;
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#credits a {
+    color: #0073b1; /* LinkedIn blue color */
+    text-decoration: none;
+}
+
+#credits a:hover {
+    text-decoration: underline;
+}
